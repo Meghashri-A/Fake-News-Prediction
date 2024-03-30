@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .title-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+        .title-bar a {
+            text-decoration: none;
+            color: #f7f7f7;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Bar -->
+    <div class="title-bar">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/interface">Detector</a>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <!-- Sign In Form -->
+                            <div class="tab-pane fade show active" id="signin">
+                                <form id="signin-form">
+                                    <div class="form-group">
+                                        <label for="signinUsername">Username:</label>
+                                        <input type="text" class="form-control" id="signinUsername" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signinPassword">Password:</label>
+                                        <input type="password" class="form-control" id="signinPassword" required>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="signIn()">Sign In</button>
+                                    <p class="mt-2">Don't have an account already? <a href="#" onclick="toggleSignUp()">Sign Up</a></p>
+                                </form>
+
+                                <!-- Sign Up Form (Initially hidden) -->
+                                <form id="signup-form" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="signupUsername">Username:</label>
+                                        <input type="text" class="form-control" id="signupUsername" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signupPassword">Password:</label>
+                                        <input type="password" class="form-control" id="signupPassword" required>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="signUp()">Sign Up</button>
+                                    <p class="mt-2">Already have an account? <a href="#" onclick="toggleSignUp()">Sign In</a></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function signIn() {
+            var username = document.getElementById('signinUsername').value;
+            var password = document.getElementById('signinPassword').value;
+
+            // Placeholder logic for demonstration
+            if (username === 'user' && password === 'password') {
+                alert('Sign In Successful');
+                window.location.href = '/interface'; // Redirect to interface.html
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+
+        function signUp() {
+            var username = document.getElementById('signupUsername').value;
+            var password = document.getElementById('signupPassword').value;
+
+            // Placeholder logic for demonstration
+            if (username && password) {
+                alert('Sign Up Successful');
+                window.location.href = '/interface'; // Redirect to interface.html
+            } else {
+                alert('Please enter valid username and password');
+            }
+        }
+
+        function toggleSignUp() {
+            var signInForm = document.getElementById('signin-form');
+            var signUpForm = document.getElementById('signup-form');
+
+            if (signInForm.style.display === 'none') {
+                signInForm.style.display = 'block';
+                signUpForm.style.display = 'none';
+            } else {
+                signInForm.style.display = 'none';
+                signUpForm.style.display = 'block';
+            }
+        }
+
+    </script>
+</body>
+</html>
